@@ -1,54 +1,57 @@
 package com.javalec.spring_mybatis;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-//import com.javalec.spring_mybatis.dao.ContentDao;
 import com.javalec.spring_mybatis.dao.IDao;
 
-/**
- * Handles requests for the application home page.
- */
+
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
 	@Autowired
 	private SqlSession sqlSession;
+
+	
+	
+	// ----- views 폴더에 있는 jsp 파일로 페이지 이동 -----
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("메인으로 이동중", locale);
-		
 		return "home";
 	}
+	
+	
+	@RequestMapping("/writeForm")
+	public String writeForm() {
+		return "/writeForm";
+	}
+	
+	
+	@RequestMapping("/view")
+	public String view() {
+		return "/view";
+	}
+	
+	
+	
+	
+	// ----- DB 연동이 필요한 부분 -----
 	
 	@RequestMapping("/list")
 	public String list(Model model) {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		model.addAttribute("list", dao.listDao());
-		
+		System.out.println("리스트 이동");
+
 		return "/list";
 	}
 	
-	@RequestMapping("/writeForm")
-	public String writeForm() {
-		
-		return "/writeForm";
-	}
 	
 	@RequestMapping("/write")
 	public String write(HttpServletRequest request, Model model) {
@@ -56,11 +59,7 @@ public class HomeController {
 		dao.writeDao(request.getParameter("mWriter"), request.getParameter("mContent"));
 		return "redirect:list";
 	}
-	
-	@RequestMapping("/view")
-	public String view() {
-		return "/view";
-	}
+
 	
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request, Model model) {
