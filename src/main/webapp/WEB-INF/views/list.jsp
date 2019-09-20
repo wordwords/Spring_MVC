@@ -5,22 +5,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title> 게시판 리스트 </title>
 </head>
 <body>
 <table width="500" cellpadding="0" cellspacing="0" border="1">
 	<tr>
 		<td>번호</td>
-		<td>작성자</td>
+		<td>제목</td>
 		<td>내용</td>
+		<td>작성자</td>
+		<td>작성일</td>
 		<td>삭제</td>
 	<tr>
 	<c:forEach items="${list}" var="dto">
 	<tr>
-		<td>${dto.mId}</td>
-		<td>${dto.mWriter}</td>
-		<td>${dto.mContent}</td>
-		<td><a href="delete?mId=${dto.mId}">X</a></td>
+		<td>${dto.bbsID}</td>
+		<td>${dto.bbsTitle}</td>
+		<td>${dto.bbsContent}</td>
+		<td>${dto.userID}</td>
+		<td>${dto.bbsDate}</td>
+		<td><a href="delete?bbsID=${dto.bbsID}">X</a></td>
 	<tr>
 	</c:forEach>
 </table>

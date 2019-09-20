@@ -47,7 +47,6 @@ public class HomeController {
 	public String list(Model model) {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		model.addAttribute("list", dao.listDao());
-		System.out.println("리스트 이동");
 
 		return "/list";
 	}
@@ -56,7 +55,7 @@ public class HomeController {
 	@RequestMapping("/write")
 	public String write(HttpServletRequest request, Model model) {
 		IDao dao = sqlSession.getMapper(IDao.class);
-		dao.writeDao(request.getParameter("mWriter"), request.getParameter("mContent"));
+		dao.writeDao(request.getParameter("bbsTitle"), request.getParameter("bbsContent"));
 		return "redirect:list";
 	}
 
@@ -64,7 +63,7 @@ public class HomeController {
 	@RequestMapping("/delete")
 	public String delete(HttpServletRequest request, Model model) {
 		IDao dao = sqlSession.getMapper(IDao.class);
-		dao.deleteDao(request.getParameter("mId"));
+		dao.deleteDao(request.getParameter("bbsID"));
 		return "redirect:list";
 	}
 	

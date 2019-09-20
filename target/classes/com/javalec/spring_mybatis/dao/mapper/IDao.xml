@@ -5,17 +5,17 @@
 
 <mapper namespace="com.javalec.spring_mybatis.dao.IDao">
 	<select id="listDao" resultType="com.javalec.spring_mybatis.dto.ContentDto">
-		SELECT * FROM BOARD ORDER BY MID DESC
+		SELECT * FROM bbs ORDER BY bbsID DESC
 	</select>
 	
 	
 	<insert id="writeDao">
-		INSERT INTO BOARD (MWRITER, MCONTENT) VALUES (#{param1}, #{param2})
+		INSERT INTO bbs (bbsTitle, bbsContent) VALUES (#{param1}, #{param2})
 	</insert>
 	
 	
 	<delete id="deleteDao">
-		DELETE FROM BOARD WHERE MID = #{param1}
+		DELETE FROM bbs WHERE bbsID = #{param1}
 	</delete>
 	
 	

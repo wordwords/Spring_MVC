@@ -2,42 +2,41 @@ package com.javalec.spring_mybatis.dto;
 
 public class MemberDto {
 
-	private int mId;
-	private String mWriter;
-	private String mContent;
+	private int bbsID;
+	private String bbsTitle;
+	private String bbsContent;
 
 	public MemberDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public MemberDto(int mId, String mWriter, String mContent) {
-		this.mId = mId;
-		this.mWriter = mWriter;
-		this.mContent = mContent;
+	public MemberDto(int bbsID, String bbsTitle, String bbsContent) {
+		this.bbsID = bbsID;
+		this.bbsTitle = bbsTitle;
+		this.bbsContent = bbsContent;
 	}
 
-	public int getmId() {
-		return mId;
+	public int getBbsID() {
+		return bbsID;
 	}
 
-	public void setmId(int mId) {
-		this.mId = mId;
+	public void setBbsID(int bbsID) {
+		this.bbsID = bbsID;
 	}
 
-	public String getmWriter() {
-		return mWriter;
+	public String getBbsTitle() {
+		return bbsTitle;
 	}
 
-	public void setmWriter(String mWriter) {
-		this.mWriter = mWriter;
+	public void setBbsTitle(String bbsTitle) {
+		this.bbsTitle = bbsTitle;
 	}
 
-	public String getmContent() {
-		return mContent;
+	public String getBbsContent() {
+		return bbsContent;
 	}
 
-	public void setmContent(String mContent) {
-		this.mContent = mContent;
+	public void setBbsContent(String bbsContent) {
+		this.bbsContent = bbsContent;
 	}
-
 }
